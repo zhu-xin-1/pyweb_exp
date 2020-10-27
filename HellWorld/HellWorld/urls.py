@@ -1,6 +1,12 @@
 from django.conf.urls import url
-from . import views
 from django.urls import path
-urlpatterns=[
-    url(r"runoob/",views.runoob),
+from . import views,testdb
+
+urlpatterns = [
+    path('runoob/',views.runoob),
+    path('testdb/',testdb.testdb)
 ]
+# from django.urls import path
+# urlpatterns=[
+#     url(r"runoob/",views.runoob),
+# ]

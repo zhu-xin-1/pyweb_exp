@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <meta charset="UTF-8">
-    <title>克强的博客</title>
-</head>
-{% load static %}
-{{name}}<img src="{% static "images/title.png" %}" alt="title">
-<body>
-
-    <p>
-    </p>
-</body>
-
-</html>
+{%extends "base.html" %}
+{% block mainbody %}
+<p>继承了 bset.html 文件</p>
+{% endblock %}
