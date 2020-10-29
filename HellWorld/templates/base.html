@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
-<hedd>
+<head>
     <meta charset="UTF-8">
     <title>克强的博客</title>
-</hedd>
+</head>
 <body>
-    <h1>Hello World!</h1>
-    <p>Django测试</p>
+<h3>用户登陆</h3>
+<form action="{% url 'login' %}" method="post">
+    <p>用户名：<input type="text" name="username"> </p>
+    <p>密码： <input type="password" name="pwd"></p>
+    <input type="submit",name="登陆">
+</form>
     {% block mainbody %}
         <p>original</p>
     {% endblock %}
