@@ -1,11 +1,11 @@
 from django.shortcuts import render,HttpResponse
 from app01 import models
-
+from django.db.models import Avg,Max,Min,Count,Sum
 # 以ORM的方法create 实现
 def add_book(request):
     # #添加数据
-    books = models.Book.objects.create(title="黯然销魂掌", price=999,publish="金庸出版社",
-                                   pub_data="2020-10-10")
+    # books = models.Book.objects.create(title="黯然销魂掌", price=999,publish="金庸出版社",
+    #                                pub_data="2020-10-10")
     # # 查找数据
     # books =models.Book.objects.all()
     # print(books,type(books))
@@ -32,6 +32,32 @@ def add_book(request):
     # print(books[0]["price"],type(books))
     # values_list() 也是查询部分字段的数据 ，当只想要数据的时候使用
     # distinct() 对数据去重
+    # 删除元素 使用数据类型.delete()
+    # # books = models.Book.objects.filter(pk__in=[1, 2]).delete()#删除序号在1到2之间的数据
+    #ORM添加数据
+    # # 获取出版社对象
+    # pub_obj = models.Publish.objects.filter(pk=1).first()
+    # # 给书籍的出版社属性publish传出版社对象
+    # book = models.Book.objects.create(title="菜鸟教程",price= 200,pub_data = "2010-10-10",publish=pub_obj)
+    # # 常见使用id
+    # pub_obj = models.Publish.objects.filter(pk=1).first()
+    # #  获取出版社对象的id
+    # pk = pub_obj.pk
+    # #  给书籍的关联出版社字段 publish_id 传出版社对象的id
+    # book = models.Book.objects.create(title="冲灵剑法", price=100, pub_date="2004-04-04", publish_id=pk)
+    # print(book, type(book))
+    # 传递对象形式
+    # chong = models.Author.objects.filter(name="令狐冲").first()
+    # ying = models.Author.objects.filter(name="任盈盈").first()
+    # book = models.Book.objects.filter(title="菜鸟教程").first()
+    # book.authors.add(chong,ying)
+    # 聚合查询 aggregate 需要导入从db.models 中引入Avg,Max,Min,Count.Sum
+    # res = models.Book.objects.aggregate(Avg("price"))
+    # print(res,type(res))
+    # 计算图书数量、最贵价格和最便宜价格
+    # res = models.Book.objects.aggregate(c=Count("id"),max=Max("price"),min=Min("price"))
+    # print(res)
+    # 分组查询 annotate
     return HttpResponse("<p>添加成功！</p>")
 
 # Create your views here.
